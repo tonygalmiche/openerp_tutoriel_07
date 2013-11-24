@@ -3,7 +3,7 @@
 <openerp>
     <data>
 
-        <!-- Formulaire -->
+        <!-- Vue Formulaire -->
         <record model="ir.ui.view" id="infosaone_famille_form_view">
             <field name="name">infosaone_famille_form_view</field>
             <field name="model">infosaone.famille</field>
@@ -20,7 +20,7 @@
         </record>
 
 
-        <!-- Tree -->
+        <!-- Vue Liste (Tree) -->
         <record model="ir.ui.view" id="infosaone_famille_tree_view">
             <field name="name">infosaone_famille_tree_view</field>
             <field name="model">infosaone.famille</field>
@@ -33,7 +33,7 @@
         </record>
         
 
-        <!-- Recherche -->
+        <!-- Permet de faire une recherche sur le code et sur la description -->
         <record model="ir.ui.view" id="infosaone_famille_filter_view" >
             <field name="name">infosaone_famille_filter_view</field>
             <field name="model">infosaone.famille</field>
@@ -46,19 +46,31 @@
         </record>
 
 
-        <!-- Action -->
-        <record model="ir.actions.act_window" id="infosaone_famille_action">
-            <field name="name">infosaone_famille_action</field>
+        <!-- Action appellée par le menu 'Liste des familles' -->
+        <record model="ir.actions.act_window" id="infosaone_famille_tree_action">
+            <field name="name">infosaone_famille_tree_action</field>
             <field name="res_model">infosaone.famille</field>
             <field name="view_type">form</field>
+            <!-- Vue tree par défaut et vue formulaire en deuxième -->
             <field name="view_mode">tree,form</field>
         </record>
 
 
-        <menuitem id="menu_infosaone_tutoriel"          sequence="1"   name="Tutoriel"/>
-            <menuitem id="sousmenu_infosaone_tutoriel"  sequence="10"  name="Tutoriel" parent="menu_infosaone_tutoriel"/>
-                <menuitem id="menu_infosaone_famille"   sequence="10"  name="Familles" parent="sousmenu_infosaone_tutoriel" action="infosaone_famille_action" />
+        <!-- Action appellée par le menu 'Nouvelle Famille' -->
+        <record model="ir.actions.act_window" id="infosaone_famille_form_action">
+            <field name="name">infosaone_famille_form_action</field>
+            <field name="res_model">infosaone.famille</field>
+            <field name="view_type">form</field>
+            <!-- Vue form par défaut et vue tree en deuxième (Permet de créer directement une famille) -->
+            <field name="view_mode">form,tree</field>
+        </record>
 
+
+        <!-- Menus et sous-menus -->
+        <menuitem id="menu_infosaone_tutoriel"               sequence="1"   name="Tutoriel"/>
+            <menuitem id="sousmenu_infosaone_tutoriel"       sequence="10"  name="Famille"            parent="menu_infosaone_tutoriel"/>
+                <menuitem id="menu_infosaone_famille_form"   sequence="10"  name="Liste des familles" parent="sousmenu_infosaone_tutoriel" action="infosaone_famille_tree_action" />
+                <menuitem id="menu_infosaone_famille_tree"   sequence="20"  name="Nouvelle Famille"   parent="sousmenu_infosaone_tutoriel" action="infosaone_famille_form_action" />
 
       
     </data>

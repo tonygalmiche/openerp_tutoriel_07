@@ -1,4 +1,4 @@
-InfoSaône / OpenERP Tutoriel 06
+InfoSaône / OpenERP Tutoriel 07
 ===================
 
 Le but de ce module est de montrer comment créer un nouvel objet (modèle) dans OpenERP.
