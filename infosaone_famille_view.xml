@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <!-- Formulaire -->
+        <record model="ir.ui.view" id="infosaone_famille_form_view">
+            <field name="name">infosaone_famille_form_view</field>
+            <field name="model">infosaone.famille</field>
+            <field name="arch" type="xml">     
+                <form string="Formulaire" version="7.0">  
+                    <sheet>
+                    <group col="2" colspan="4">
+                        <field name="name"/> 
+                        <field name="description"/> 
+                    </group>
+                    </sheet>
+                </form>
+                </field>
+        </record>
+
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="infosaone_famille_tree_view">
+            <field name="name">infosaone_famille_tree_view</field>
+            <field name="model">infosaone.famille</field>
+            <field name="arch" type="xml">
+                <tree string="Liste">             
+                <field name="name"/> 
+                <field name="description"/> 
+                </tree>
+            </field>
+        </record>
+        
+
+        <!-- Recherche -->
+        <record model="ir.ui.view" id="infosaone_famille_filter_view" >
+            <field name="name">infosaone_famille_filter_view</field>
+            <field name="model">infosaone.famille</field>
+            <field name="arch" type="xml">
+                <search string="Recherche">
+                    <field name="name"        filter_domain="[('name'       , 'ilike', self)]"/>
+                    <field name="description" filter_domain="[('description', 'ilike', self)]"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- Action -->
+        <record model="ir.actions.act_window" id="infosaone_famille_action">
+            <field name="name">infosaone_famille_action</field>
+            <field name="res_model">infosaone.famille</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <menuitem id="menu_infosaone_tutoriel"          sequence="1"   name="Tutoriel"/>
+            <menuitem id="sousmenu_infosaone_tutoriel"  sequence="10"  name="Tutoriel" parent="menu_infosaone_tutoriel"/>
+                <menuitem id="menu_infosaone_famille"   sequence="10"  name="Familles" parent="sousmenu_infosaone_tutoriel" action="infosaone_famille_action" />
+
+
+      
+    </data>
+</openerp>
